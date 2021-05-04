@@ -55,7 +55,8 @@ def end():
                 'income': request.form['income']
                 }
         print(datos)
-        cosas = query.inout(datos)
+        predictor = session.get('predictor', None)
+        cosas = query.inout(datos,switcher[predictor])
 
-        return render_template('end.html', datos=datos, cosas=cosas, predictor=session.get('predictor', None))
+        return render_template('end.html', datos=datos, cosas=cosas, predictor=predictor)
 

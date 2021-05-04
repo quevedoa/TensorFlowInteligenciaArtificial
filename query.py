@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 import sys
 
-def inout(datos):
+def inout(datos,index):
     dic_workclass = {
 
         "Private": 0,
@@ -158,11 +158,11 @@ def inout(datos):
         "?": -1
     }
 
-    y_query = [
+    valores = [
             int(datos['edad']),
             dic_workclass[datos['workclass']],
             dic_education[datos['education']],
-            #int(datos['education-num']),
+            int(datos['education-num']),
             dic_marital_status[datos['marital-status']],
             dic_occupation[datos['occupation']],
             dic_relationship[datos['relationship']],
@@ -175,7 +175,12 @@ def inout(datos):
             dic_50[datos['income']]
             ]
 
-    index = 2
+    y_query = []
+    
+    for i in range(0,14):
+        if i != index:
+            y_query.append(valores[i])
+
     modelPath = 'modelos/modelo{}'.format(index)
     model = tf.keras.models.load_model(modelPath)
 
