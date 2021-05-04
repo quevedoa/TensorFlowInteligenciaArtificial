@@ -223,6 +223,7 @@ def inout(datos,index):
         y_query[i] = (y_query[i] - x_mean)/(x_std + epsilon)
     x_test.append(y_query)
     pred = np.argmax(model.predict(x_test)[0])
+    pred = pred - 1
 
     listaDics = [0, dic_workclass, dic_education, 0, dic_marital_status, dic_occupation, dic_relationship, dic_race, dic_sex, 0, 0, 0, dic_native_country, dic_50]
     if index in  (1, 2, 4, 5, 6, 7, 8, 12, 13):
@@ -236,6 +237,3 @@ def inout(datos,index):
     respQuery.close()
 
     return str(pred)
-
-
-
