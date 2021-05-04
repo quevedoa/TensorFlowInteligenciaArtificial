@@ -20,7 +20,7 @@ switcher = {
     "Capital Loss":10,
     "Hours per Week":11,
     "Native Country":12,
-    "Income (=&lt50k or &gt50k)":13
+    "Income (=<50k or >50k)":13
 }
 
 @app.route('/', methods = ['POST', 'GET'])
