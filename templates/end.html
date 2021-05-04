@@ -1,7 +1,10 @@
-{{ datos }}
-<br>
-<br>
-<br>
-<br>
-{{ cosas }}
-<!-- edita cosas aqui -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="py-4 text-center">
+    <h3>
+        {{predictor}}:
+        <small class="text-muted">{{cosas}}</small>
+    </h3>
+</div>
+{% endblock %}
