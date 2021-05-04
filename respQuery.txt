@@ -1,1 +1,1 @@
-predicción: Some-college
+predicción: 37

@@ -38,24 +38,56 @@ def fill():
 @app.route('/end', methods = ['POST', 'GET'])
 def end():
     if request.method == 'POST':
-        datos = {
-                'age': request.form['age'],
-                'workclass': request.form['workclass'],
-                'education': request.form['education'],
-                'education-num': request.form['education-num'],
-                'marital-status': request.form['marital-status'],
-                'occupation': request.form['occupation'],
-                'relationship': request.form['relationship'],
-                'race': request.form['race'],
-                'sex': request.form['sex'],
-                'capital-gain': request.form['capital-gain'],
-                'capital-loss': request.form['capital-loss'],
-                'hours-per-week': request.form['hours-per-week'],
-                'native-country': request.form['native-country'],
-                'income': request.form['income']
-                }
-        print(datos)
         predictor = session.get('predictor', None)
+
+        datos = {}
+        outer = switcher[predictor]
+        i=0
+
+        if i != outer:
+            datos['age']=request.form['age']
+        i+=1
+        if i != outer:
+            datos['workclass']=request.form['workclass']
+        i+=1
+        if i != outer:
+            datos['education']=request.form['education']
+        i+=1
+        if i != outer:
+            datos['education-num']=request.form['education-num']
+        i+=1
+        if i != outer:
+            datos['marital-status']=request.form['marital-status']
+        i+=1
+        if i != outer:
+            datos['occupation']=request.form['occupation']
+        i+=1
+        if i != outer:
+            datos['relationship']=request.form['relationship']
+        i+=1
+        if i != outer:
+            datos['race']=request.form['race']
+        i+=1
+        if i != outer:
+            datos['sex']=request.form['sex']
+        i+=1
+        if i != outer:
+            datos['capital-gain']=request.form['capital-gain']
+        i+=1
+        if i != outer:
+            datos['capital-loss']=request.form['capital-loss']
+        i+=1
+        if i != outer:
+            datos['hours-per-week']=request.form['hours-per-week']
+        i+=1
+        if i != outer:
+            datos['native-country']=request.form['native-country']
+        i+=1
+        if i != outer:
+            datos['income']=request.form['income']
+        
+        print(datos)
+        
         cosas = query.inout(datos,switcher[predictor])
 
         return render_template('end.html', datos=datos, cosas=cosas, predictor=predictor)

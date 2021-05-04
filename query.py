@@ -153,33 +153,55 @@ def inout(datos,index):
 
 
     dic_50 = {
-        "Más que 50K": 0,
-        "Menos que 50K": 1,
+        "Más que 50K": 0, ">50k": 0,
+        "Menos que 50K": 1, "=<50k": 1,
         "?": -1
     }
 
-    valores = [
-            int(datos['edad']),
-            dic_workclass[datos['workclass']],
-            dic_education[datos['education']],
-            int(datos['education-num']),
-            dic_marital_status[datos['marital-status']],
-            dic_occupation[datos['occupation']],
-            dic_relationship[datos['relationship']],
-            dic_race[datos['race']],
-            dic_sex[datos['sex']],
-            int(datos['capital-gain']),
-            int(datos['capital-loss']),
-            int(datos['hours-per-week']),
-            dic_native_country[datos['native-country']],
-            dic_50[datos['income']]
-            ]
-
     y_query = []
-    
-    for i in range(0,14):
-        if i != index:
-            y_query.append(valores[i])
+    i=0
+
+    if i != index:
+        y_query.append(int(datos['age']))
+    i+=1
+    if i != index:
+        y_query.append(dic_workclass[datos['workclass']])
+    i+=1
+    if i != index:
+        y_query.append(dic_education[datos['education']])
+    i+=1
+    if i != index:
+        y_query.append(int(datos['education-num']))
+    i+=1
+    if i != index:
+        y_query.append(dic_marital_status[datos['marital-status']])
+    i+=1
+    if i != index:
+        y_query.append(dic_occupation[datos['occupation']])
+    i+=1
+    if i != index:
+        y_query.append(dic_relationship[datos['relationship']])
+    i+=1
+    if i != index:
+        y_query.append(dic_race[datos['race']])
+    i+=1
+    if i != index:
+        y_query.append(dic_sex[datos['sex']])
+    i+=1
+    if i != index:
+        y_query.append(int(datos['capital-gain']))
+    i+=1
+    if i != index:
+        y_query.append(int(datos['capital-loss']))
+    i+=1
+    if i != index:
+        y_query.append(int(datos['hours-per-week']))
+    i+=1
+    if i != index:
+        y_query.append(dic_native_country[datos['native-country']])
+    i+=1
+    if i != index:
+        y_query.append(dic_50[datos['income']])
 
     modelPath = 'modelos/modelo{}'.format(index)
     model = tf.keras.models.load_model(modelPath)
